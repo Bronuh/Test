@@ -84,6 +84,7 @@ public class Main extends JavaPlugin implements Listener {
 		getCommand("bronuhsshit").setExecutor(new ChatListener());
 		getCommand("stats").setExecutor(new ChatListener());
 		getCommand("upgrade").setExecutor(new ChatListener());
+		getCommand("lootbox").setExecutor(new ChatListener());
 		getCommand("fix").setExecutor(new ChatListener());
 		getCommand("gm").setExecutor(new ChatListener());
 		getCommand("name").setExecutor(new ChatListener());

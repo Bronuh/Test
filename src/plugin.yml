@@ -30,3 +30,6 @@ commands:
    upgrade:
       description: upgrade your stats
       aliases: [up]
+   lootbox:
+      description: upgrade your stats
+      aliases: [loot]

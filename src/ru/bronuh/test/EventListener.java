@@ -36,7 +36,6 @@ import org.bukkit.util.Vector;
 
 
 
-
 public class EventListener implements Listener {
 	public static PluginLogger Log;
 	public static double FishChance, EggChance = 0.1;

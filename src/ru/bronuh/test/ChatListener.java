@@ -83,6 +83,17 @@ public class ChatListener implements CommandExecutor {
 			Item2.setDurability((short)0);
 			//e.getPlayer().getInventory().remove(Main);
 			ply.updateInventory();
+			ply.sendMessage(prefix + ChatColor.GREEN + " ПОЧИНЕНО!11");
+			return true;
+		}
+		
+		if(command.getName().contentEquals("lootbox")) {
+			Main.debug("   Commamd is /lootbox");
+			
+			/*
+			 * @todo Доделать лутбоксы
+			 * @body Раскурить шалкербоксы, либо создавать инвентарь с лутом. Алсо, как вариант намутить рюкзак.
+			 */
 			return true;
 		}
 		
