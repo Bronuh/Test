@@ -419,6 +419,7 @@ public class EventListener implements Listener {
 	public void onEntityDamage(EntityDamageEvent e) {
 		Player p;
 		if(e.getEntity() instanceof Player) {
+			Main.debug("Damage type: "+e.getCause());
 			p = (Player)e.getEntity();
 			textLevel(p);
 			for(Player ply : Damages) {
