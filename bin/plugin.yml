@@ -1,0 +1,32 @@
+name: BronuhsShit
+main: ru.bronuh.test.Main
+version: 1.1
+authors: [Bronuh]
+description: This is da real shiet. Prepaer ur anoos
+commands:
+   bronuhsshit:
+      description: main shit generator command. Also bh, shit
+      aliases: [bh,shit]
+   self:
+      description: describe your actions
+      aliases: [me,do]
+   format:
+      description: allows you to print formatted text
+   debug:
+      description: turns on debug
+   config:
+      description: allows you to edit config values
+      aliases: [cfg]
+   name:
+      description: changes your name to other random name
+   othername:
+      description: changes your buddy name to other random name
+   fix:
+      description: fix your item in main hand
+   gm:
+      description: changes gamemode
+   stats:
+      description: Show your stats
+   upgrade:
+      description: upgrade your stats
+      aliases: [up]
