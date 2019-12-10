@@ -17,6 +17,8 @@ public class Account {
 	public static ArrayList<Account> Accounts = new ArrayList<Account>();
 	public static double ArmorConst = 0.06;
 	
+	public static double SnipeConst = 0.25, StrengthConst=1.5;
+	
 	public static int SnipeCost = 15,
 			ArmorCost = 5,
 			StrengthCost = 5,

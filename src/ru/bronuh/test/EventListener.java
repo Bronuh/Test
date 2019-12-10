@@ -153,7 +153,7 @@ public class EventListener implements Listener {
 			
 			if(e.getDamager() instanceof Arrow) {
 			}else {
-				e.setDamage(e.getDamage()+Acc.Strength);
+				e.setDamage(e.getDamage()+Acc.Strength*Account.StrengthConst);
 				Damage = Math.min(e.getDamage(),Victim.getHealth());
 				Main.debug("FULL DAMAGE: "+Damage);
 			}
@@ -488,7 +488,7 @@ public class EventListener implements Listener {
 						}
 					}else {
 						Account Acc = Account.getAccount((Player)p);
-						int Mult = Acc.Snipe+1;
+						double Mult = (Acc.Snipe+1)*Account.SnipeConst;
 						e.getProjectile().setVelocity(e.getProjectile().getVelocity().multiply(Mult));
 						/*if(p.getLevel()>=ChatConfig.getInt("SpeedUpLevel")) {
 							int Mult = ChatConfig.getInt("BowSpeedUp");
