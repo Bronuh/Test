@@ -10,12 +10,12 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
 public class Account {
-	public String CustomName;
-	public int Score, Money, Snipe, Armor, Strength, Looting, Multishot, Vampirism;
+	public String Name;
+	public int Score, Money, Snipe, Armor, Strength, Looting, Multishot, Vampirism, Permission;
 	public Player player;
 	public boolean Attack;
 	public static ArrayList<Account> Accounts = new ArrayList<Account>();
-	public static double ArmorConst = 0.06;
+	public static double ArmorConst = 0.065;
 	
 	public static double SnipeConst = 0.25, StrengthConst=1.5;
 	
@@ -42,7 +42,7 @@ public class Account {
     
     
     Account(Player Ply){
-		CustomName = Ply.getCustomName();
+		Name = Ply.getCustomName();
 		Score = 0;
 		Money = 0;
 		Snipe = 0;
@@ -52,7 +52,7 @@ public class Account {
 		player = Ply;
 		create(Ply);
 		Accounts.add(this);
-		
+		Permission = 0;
 	} 
     
 	
@@ -101,6 +101,7 @@ public class Account {
 		Armor = config.getInt("Armor");
 		Strength = config.getInt("Strength");
 		Looting = config.getInt("Looting");
+		Permission = config.getInt("Permission");
     }
  
     public static FileConfiguration get() {
@@ -109,12 +110,14 @@ public class Account {
  
     public void save() {
         try {
+        	config.set("Name", Name);
         	config.set("Score", Score);
         	config.set("Money", Money);
         	config.set("Snipe", Snipe);
         	config.set("Armor", Armor);
         	config.set("Strength", Strength);
         	config.set("Looting", Looting);
+        	config.set("Permission", Permission);
             config.save(cfile);
         } catch(Exception e) {
             Bukkit.broadcast(ChatColor.RED + "Error saving " + cfile.getName() + "!", "ChatColor.ErrorMsgs");

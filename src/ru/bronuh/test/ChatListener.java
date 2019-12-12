@@ -248,12 +248,6 @@ public class ChatListener implements CommandExecutor {
 		if (command.getName().equalsIgnoreCase("bronuhsshit")) {
 			Player player = (Player) sender;
 			Main.debug("   Comand is /bh");
-			if(args.length == 0) {
-				player.sendMessage(prefix + ChatColor.GREEN + "Commands:");
-				player.sendMessage(ChatColor.GREEN + "  /bh Help " + ChatColor.GRAY + " | Показывает правила безопасной игры на блядском сервере");
-				player.sendMessage(ChatColor.GREEN + "  /bh Info " + ChatColor.GRAY + " | Shows info about the plugin");
-				return true;
-			}
 			if (args[0].equalsIgnoreCase("tips")) {
 				Main.debug("      Argument is 'tips'");
 				for(int i = 1;i < Tips.Messages.length; i++) {
@@ -261,6 +255,14 @@ public class ChatListener implements CommandExecutor {
 				}
 				return true;
 			}
+			if(args.length == 0) {
+				player.sendMessage(prefix + ChatColor.GREEN + "Commands:");
+				player.sendMessage(ChatColor.GREEN + "  /bh Help " + ChatColor.GRAY + " | Показывает правила безопасной игры на блядском сервере");
+				player.sendMessage(ChatColor.GREEN + "  /bh Info " + ChatColor.GRAY + " | Shows info about the plugin");
+				
+				return true;
+			}
+			
 			
 			
 			if (args[0].equalsIgnoreCase("sys")) {
@@ -295,6 +297,8 @@ public class ChatListener implements CommandExecutor {
 				player.sendMessage(ChatColor.GREEN + "        " + ChatColor.GRAY + " | #ЦВЕТ - переключает цвет. Например, #GREEN или #DARK_RED");
 				player.sendMessage(ChatColor.GREEN + "        " + ChatColor.GRAY + " | #СТИЛЬ - то же что и цвет, но меняет стиль текста");
 				player.sendMessage(ChatColor.GREEN + "  /name " + ChatColor.GRAY + " | Меняет ваш ник. Поддерживает форматирование. Если ник не указан, выбирает случайный из списка.");
+				player.sendMessage(ChatColor.GREEN + "  /stats " + ChatColor.GRAY + " | Посмотреть статы");
+				player.sendMessage(ChatColor.GREEN + "  /upgrade [str/sni/arm] " + ChatColor.GRAY + " | Улучшить силу/стрельбу/броню");
 				return true;
 			}
 			
