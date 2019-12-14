@@ -72,6 +72,7 @@ public class ChatListener implements CommandExecutor {
 		//if(command.get)
 		Main.debug("Executed ChatListener");
 		Player ply = (Player)sender;
+		Account Acc = Account.getAccount(ply);
 		if(command.getName().contentEquals("fix")) {
 			Main.debug("   Commamd is /fix");
 			
@@ -81,6 +82,7 @@ public class ChatListener implements CommandExecutor {
 			
 			Item.setDurability((short)0);
 			Item2.setDurability((short)0);
+			
 			//e.getPlayer().getInventory().remove(Main);
 			ply.updateInventory();
 			ply.sendMessage(prefix + ChatColor.GREEN + " ПОЧИНЕНО!11");
@@ -90,17 +92,25 @@ public class ChatListener implements CommandExecutor {
 		if(command.getName().contentEquals("lootbox")) {
 			Main.debug("   Commamd is /lootbox");
 			
-			/*
-			 * @todo Доделать лутбоксы
-			 * @body Раскурить шалкербоксы, либо создавать инвентарь с лутом. Алсо, как вариант намутить рюкзак.
-			 */
+			
+			return true;
+		}
+		
+		if(command.getName().contentEquals("ender")) {
+			Main.debug("   Commamd is /ender");
+			
+			if(Acc.buy(2500)) {
+				ply.openInventory(ply.getEnderChest());
+				//ply.sendMessage(ChatColor.GREEN + "НЕ ДОСТАТОЧНЫЕ "+ChatConfig.getString("MoneyName"));
+			}
+			
 			return true;
 		}
 		
 		if(command.getName().contentEquals("upgrade")) {
 			Main.debug("   Commamd is /upgrade");
 			//Player ply = (Player)sender;
-			Account Acc = Account.getAccount(ply);
+			//Account Acc = Account.getAccount(ply);
 			if(args.length == 0) {
 				ply.sendMessage(prefix + ChatColor.RED + "Что нужно улучшить-то?");
 				return true;
@@ -110,7 +120,7 @@ public class ChatListener implements CommandExecutor {
 					if(Acc.Score >= Cost) {
 						Acc.Score -= Cost;
 						Acc.Snipe += 1;
-						ply.sendMessage(prefix + ChatColor.GREEN + "Стрельба улучшена до "+Acc.Snipe+" (скорость стрелы x"+(Acc.Snipe+1)+")");
+						ply.sendMessage(prefix + ChatColor.GREEN + "Стрельба улучшена до "+Acc.Snipe+" (скорость стрелы x"+((Acc.Snipe+1)*Account.SnipeConst)+")");
 					}else{
 						ply.sendMessage(prefix + ChatColor.RED + "НЕ ДОСТАТОЧНЫЕ ОЧКИ");
 					}
@@ -134,7 +144,7 @@ public class ChatListener implements CommandExecutor {
 					if(Acc.Score >= Cost) {
 						Acc.Score -= Cost;
 						Acc.Strength += 1;
-						ply.sendMessage(prefix + ChatColor.GREEN + "Сила атаки улучшена до +"+Acc.Strength);
+						ply.sendMessage(prefix + ChatColor.GREEN + "Сила атаки улучшена до +"+(Acc.Strength*Account.StrengthConst));
 					}else{
 						ply.sendMessage(prefix + ChatColor.RED + "НЕ ДОСТАТОЧНЫЕ ОЧКИ");
 					}
@@ -146,13 +156,13 @@ public class ChatListener implements CommandExecutor {
 		if(command.getName().contentEquals("stats")) {
 			Main.debug("   Commamd is /stats");
 			
-			Account Acc =Account.getAccount(ply);
+			//Account Acc =Account.getAccount(ply);
 		    Acc.player.sendMessage(ChatColor.YELLOW + "Твое баблишко: "+Acc.Money+" "+ChatConfig.getString("MoneyName"));
 			Acc.player.sendMessage(ChatColor.GREEN + "Твои очки: "+Acc.Score);
 			Acc.player.sendMessage(ChatColor.WHITE + "====================================");
-			Acc.player.sendMessage(ChatColor.AQUA + "*   Сила лука: "+Acc.Snipe+" (Скорость стрелы x"+(Acc.Snipe+1)+
+			Acc.player.sendMessage(ChatColor.AQUA + "*   Сила лука: "+Acc.Snipe+" (Скорость стрелы x"+((Acc.Snipe+1)*Account.SnipeConst)+
 					". Улучшение за "+(int)(Account.SnipeCost*Math.pow(Account.SnipeCostMult,Acc.Snipe))+" очков");
-			Acc.player.sendMessage(ChatColor.AQUA + "*   Сила удара: "+Acc.Strength+" (Урон +"+(Acc.Strength)+
+			Acc.player.sendMessage(ChatColor.AQUA + "*   Сила удара: "+Acc.Strength+" (Урон +"+((Acc.Strength)*Account.StrengthConst)+
 					". Улучшение за "+(int)(Account.StrengthCost*Math.pow(Account.StrengthCostMult,Acc.Strength))+" очков");
 			int Protection = (int)((Acc.Armor*Account.ArmorConst)/(1+Acc.Armor*Account.ArmorConst)*100);
 			Acc.player.sendMessage(ChatColor.AQUA + "*   Броня: "+Acc.Armor+" (снижение урона на "+(Protection)+

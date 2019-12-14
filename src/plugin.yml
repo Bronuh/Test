@@ -33,3 +33,6 @@ commands:
    lootbox:
       description: upgrade your stats
       aliases: [loot]
+   ender:
+      description: show your enderchest
+      aliases: [ender,chest]

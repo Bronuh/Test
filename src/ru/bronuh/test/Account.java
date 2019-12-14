@@ -55,7 +55,21 @@ public class Account {
 		Permission = 0;
 	} 
     
+	public boolean buy(int Value) {
+		boolean access = (Money>=Value);
+		if(!access) {
+			player.sendMessage(ChatColor.RED + "ÍÅ ÄÎÑÒÀÒÎ×ÍÛÅ "+ChatConfig.getString("MoneyName")+" ("+Money+"/"+Value+")");
+		}else {
+			Money -= Value;
+			player.sendMessage(ChatColor.GREEN + "ÑÏÈÑÀÍÎ "+Value+" "+ChatConfig.getString("MoneyName")+" (Îñòàëîñü "+Money+")");
+		}
+
+		return access; //(Money>=Value);
+		
+	}
 	
+
+    
     public static Account getAccount(Player Ply) {
     	for(Account a: Accounts) {
 			if(a.player==Ply) {
